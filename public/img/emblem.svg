@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="56" viewBox="0 0 72 56" fill="none" stroke="#C9A86A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- lotus petals -->
+  <path d="M36 46 C36 34 36 26 36 18"/>
+  <path d="M36 18 C31 10 27 7 22 6 C24 13 28 19 36 24"/>
+  <path d="M36 18 C41 10 45 7 50 6 C48 13 44 19 36 24"/>
+  <path d="M36 20 C33 12 34 8 36 3 C38 8 39 12 36 20"/>
+  <path d="M36 24 C27 22 20 24 14 30 C22 32 30 30 36 24"/>
+  <path d="M36 24 C45 22 52 24 58 30 C50 32 42 30 36 24"/>
+  <!-- flourish base -->
+  <path d="M18 50 C26 44 46 44 54 50" opacity="0.9"/>
+  <circle cx="36" cy="14" r="1.6" fill="#C9A86A" stroke="none"/>
+</svg>

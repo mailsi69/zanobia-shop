@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="170" viewBox="0 0 130 170">
+  <g fill="none" stroke="#1D7F7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.55">
+    <!-- central buti sprig -->
+    <path d="M65 150 C65 130 65 118 65 106"/>
+    <!-- lotus crown -->
+    <path d="M65 106 C58 96 52 92 46 92 C52 84 58 82 65 90 C72 82 78 84 84 92 C78 92 72 96 65 106 Z"/>
+    <path d="M65 92 C63 84 65 78 65 74 C65 78 67 84 65 92"/>
+    <path d="M56 90 C50 86 47 80 46 74 C52 78 55 83 56 90"/>
+    <path d="M74 90 C80 86 83 80 84 74 C78 78 75 83 74 90"/>
+    <!-- paired leaves -->
+    <path d="M65 132 C54 130 46 124 42 114 C52 116 61 122 65 132"/>
+    <path d="M65 132 C76 130 84 124 88 114 C78 116 69 122 65 132"/>
+    <path d="M65 120 C57 119 51 115 48 108 C55 110 61 114 65 120"/>
+    <path d="M65 120 C73 119 79 115 82 108 C75 110 69 114 65 120"/>
+    <!-- buds -->
+    <circle cx="46" cy="74" r="2.4" fill="#1D7F7A" stroke="none"/>
+    <circle cx="84" cy="74" r="2.4" fill="#1D7F7A" stroke="none"/>
+    <circle cx="65" cy="72" r="2.6" fill="#C9A86A" stroke="none"/>
+  </g>
+  <!-- half-drop companion (top edge) for denser weave -->
+  <g fill="none" stroke="#7EC4C1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.45" transform="translate(65,-85)">
+    <path d="M0 150 C0 130 0 118 0 106"/>
+    <path d="M0 106 C-7 96 -13 92 -19 92 C-13 84 -7 82 0 90 C7 82 13 84 19 92 C13 92 7 96 0 106 Z"/>
+    <path d="M0 132 C-11 130 -19 124 -23 114 C-13 116 -4 122 0 132"/>
+    <path d="M0 132 C11 130 19 124 23 114 C13 116 4 122 0 132"/>
+  </g>
+</svg>

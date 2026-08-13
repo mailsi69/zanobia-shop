@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zanobia Sewing — App Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#1D7F7A;--aqua:#7EC4C1;--seafoam:#BFDCD8;--cream:#FAF6F1;--pink:#F4A6B8;
+  --rose:#E07A8A;--charcoal:#333;--gold:#C9A86A;--line:#E7DFD3;
+  --display:"Playfair Display",Georgia,serif;--body:"Poppins",system-ui,sans-serif;
+  --bp:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMzAiIGhlaWdodD0iMTcwIiB2aWV3Qm94PSIwIDAgMTMwIDE3MCI+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMUQ3RjdBIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC41NSI+CiAgICA8IS0tIGNlbnRyYWwgYnV0aSBzcHJpZyAtLT4KICAgIDxwYXRoIGQ9Ik02NSAxNTAgQzY1IDEzMCA2NSAxMTggNjUgMTA2Ii8+CiAgICA8IS0tIGxvdHVzIGNyb3duIC0tPgogICAgPHBhdGggZD0iTTY1IDEwNiBDNTggOTYgNTIgOTIgNDYgOTIgQzUyIDg0IDU4IDgyIDY1IDkwIEM3MiA4MiA3OCA4NCA4NCA5MiBDNzggOTIgNzIgOTYgNjUgMTA2IFoiLz4KICAgIDxwYXRoIGQ9Ik02NSA5MiBDNjMgODQgNjUgNzggNjUgNzQgQzY1IDc4IDY3IDg0IDY1IDkyIi8+CiAgICA8cGF0aCBkPSJNNTYgOTAgQzUwIDg2IDQ3IDgwIDQ2IDc0IEM1MiA3OCA1NSA4MyA1NiA5MCIvPgogICAgPHBhdGggZD0iTTc0IDkwIEM4MCA4NiA4MyA4MCA4NCA3NCBDNzggNzggNzUgODMgNzQgOTAiLz4KICAgIDwhLS0gcGFpcmVkIGxlYXZlcyAtLT4KICAgIDxwYXRoIGQ9Ik02NSAxMzIgQzU0IDEzMCA0NiAxMjQgNDIgMTE0IEM1MiAxMTYgNjEgMTIyIDY1IDEzMiIvPgogICAgPHBhdGggZD0iTTY1IDEzMiBDNzYgMTMwIDg0IDEyNCA4OCAxMTQgQzc4IDExNiA2OSAxMjIgNjUgMTMyIi8+CiAgICA8cGF0aCBkPSJNNjUgMTIwIEM1NyAxMTkgNTEgMTE1IDQ4IDEwOCBDNTUgMTEwIDYxIDExNCA2NSAxMjAiLz4KICAgIDxwYXRoIGQ9Ik02NSAxMjAgQzczIDExOSA3OSAxMTUgODIgMTA4IEM3NSAxMTAgNjkgMTE0IDY1IDEyMCIvPgogICAgPCEtLSBidWRzIC0tPgogICAgPGNpcmNsZSBjeD0iNDYiIGN5PSI3NCIgcj0iMi40IiBmaWxsPSIjMUQ3RjdBIiBzdHJva2U9Im5vbmUiLz4KICAgIDxjaXJjbGUgY3g9Ijg0IiBjeT0iNzQiIHI9IjIuNCIgZmlsbD0iIzFEN0Y3QSIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSI2NSIgY3k9IjcyIiByPSIyLjYiIGZpbGw9IiNDOUE4NkEiIHN0cm9rZT0ibm9uZSIvPgogIDwvZz4KICA8IS0tIGhhbGYtZHJvcCBjb21wYW5pb24gKHRvcCBlZGdlKSBmb3IgZGVuc2VyIHdlYXZlIC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzdFQzRDMSIgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC40NSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjUsLTg1KSI+CiAgICA8cGF0aCBkPSJNMCAxNTAgQzAgMTMwIDAgMTE4IDAgMTA2Ii8+CiAgICA8cGF0aCBkPSJNMCAxMDYgQy03IDk2IC0xMyA5MiAtMTkgOTIgQy0xMyA4NCAtNyA4MiAwIDkwIEM3IDgyIDEzIDg0IDE5IDkyIEMxMyA5MiA3IDk2IDAgMTA2IFoiLz4KICAgIDxwYXRoIGQ9Ik0wIDEzMiBDLTExIDEzMCAtMTkgMTI0IC0yMyAxMTQgQy0xMyAxMTYgLTQgMTIyIDAgMTMyIi8+CiAgICA8cGF0aCBkPSJNMCAxMzIgQzExIDEzMCAxOSAxMjQgMjMgMTE0IEMxMyAxMTYgNCAxMjIgMCAxMzIiLz4KICA8L2c+Cjwvc3ZnPgo=');
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:radial-gradient(1200px 700px at 50% -10%,#fff,var(--cream));
+  color:var(--charcoal);min-height:100vh;display:grid;place-items:center;padding:24px;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background-image:var(--bp);background-size:130px 170px;opacity:.35;pointer-events:none;z-index:0}
+.stage{width:100%;max-width:1000px;position:relative;z-index:1}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.top .em{width:40px;height:31px}
+.top .wm{font-family:var(--display);font-weight:700;color:var(--teal);font-size:26px;letter-spacing:.05em}
+.top .wm small{display:block;font-size:8px;letter-spacing:.42em;color:var(--rose);text-transform:uppercase}
+.top .tag{margin-left:auto;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.panel{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 70px -30px rgba(29,127,122,.4);
+  overflow:hidden;position:relative}
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;min-height:560px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+/* left copy */
+.copy{padding:48px 44px;position:relative;display:flex;flex-direction:column;justify-content:center;background:var(--cream)}
+.copy::before{content:"";position:absolute;inset:0;background-image:var(--bp);background-size:130px 170px;opacity:.5}
+.copy>*{position:relative;z-index:1}
+.step-no{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+.copy h2{font-family:var(--display);color:var(--teal);font-size:40px;line-height:1.08;margin-bottom:14px;font-weight:700}
+.copy p{font-size:16.5px;color:#5a5a5a;line-height:1.6;max-width:34ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tags span{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--teal)}
+.tags span.rose{color:var(--rose);border-color:var(--pink)}
+/* right: phone mock */
+.mock{background:linear-gradient(160deg,#eaf4f2,var(--seafoam));display:grid;place-items:center;padding:36px 20px;position:relative;overflow:hidden}
+.mock::before{content:"";position:absolute;inset:0;background-image:var(--bp);background-size:130px 170px;opacity:.6;pointer-events:none}
+.mock>*{position:relative;z-index:1}
+.phone::before{content:"";position:absolute;inset:0;background-image:var(--bp);background-size:92px 120px;opacity:.14;pointer-events:none;z-index:0}
+.phone>*{position:relative;z-index:1}
+.phone{width:262px;height:498px;background:var(--cream);border-radius:34px;border:9px solid #21403f;
+  box-shadow:0 24px 50px -18px rgba(0,0,0,.4);overflow:hidden;position:relative}
+.scr{position:absolute;inset:0;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s;overflow:hidden;font-size:12px}
+.scr.on{opacity:1;transform:none}
+.pbar{background:var(--teal);color:#fff;font-size:9px;text-align:center;padding:6px;letter-spacing:.02em}
+.pbar b{color:var(--gold)}
+.ptop{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);background:#fff}
+.ptop .pw{font-family:var(--display);font-weight:700;color:var(--teal);font-size:15px;letter-spacing:.04em}
+.ptop .pw small{display:block;font-size:5px;letter-spacing:.32em;color:var(--rose)}
+.ptop .ico{margin-left:auto;display:flex;gap:8px;color:var(--teal)}
+.ptop .ico svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
+.pbody{padding:12px;height:100%;overflow:hidden}
+.lock{text-align:center;padding:26px 10px}
+.lock .em{width:44px;margin:0 auto 6px}
+.lock .w{font-family:var(--display);font-weight:700;color:var(--teal);font-size:40px;letter-spacing:.05em;line-height:.9}
+.lock .s{color:var(--rose);letter-spacing:.34em;font-size:9px;font-weight:600;text-transform:uppercase;margin:6px 0}
+.lock .t{letter-spacing:.24em;font-size:9px;font-weight:600;text-transform:uppercase;margin-top:6px}
+.btnrow{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.b{font-size:10px;font-weight:600;padding:9px 14px;border-radius:8px}
+.b.fill{background:var(--teal);color:#fff}.b.out{border:1.5px solid var(--teal);color:var(--teal)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px}
+.chip{font-size:9px;font-weight:600;padding:6px 10px;border-radius:999px;border:1.5px solid #CFE4E1;color:var(--teal);background:#fff;white-space:nowrap}
+.chip.on{background:var(--teal);color:#fff}.chip.rose{color:var(--rose);border-color:var(--pink)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pc{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.pc .im{aspect-ratio:3/4;background:var(--seafoam);position:relative}
+.pc .bd{background:var(--rose);color:#fff;font-size:7px;font-weight:700;padding:2px 6px;border-radius:999px;position:absolute;top:5px;left:5px;text-transform:uppercase}
+.pc .bd.teal{background:var(--teal)}
+.pc .h{position:absolute;top:4px;right:4px;width:16px;height:16px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.pc .h svg{width:9px;height:9px;fill:var(--rose);stroke:var(--rose)}
+.pc .in{padding:6px 7px}
+.pc .ct{font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.pc .nm{font-family:var(--display);font-size:9px;color:var(--charcoal);margin:1px 0 2px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc .pr{color:var(--teal);font-weight:700;font-size:9px}
+.pc .pr s{color:#aaa;font-weight:400;font-size:7px;margin-left:3px}
+.sbar{display:flex;gap:6px;margin-bottom:10px}
+.sbar input{flex:1;border:1.5px solid var(--teal);border-radius:999px;padding:8px 10px;font-size:9px;color:#888;background:#fff}
+.sbar .g{background:var(--teal);color:#fff;border-radius:999px;padding:8px 12px;font-size:9px;font-weight:600}
+.big{aspect-ratio:1/1;background:var(--seafoam);border-radius:12px;margin-bottom:8px;position:relative}
+.sizes{display:flex;gap:5px;margin:6px 0}
+.sz{font-size:8px;font-weight:700;border:1.5px solid #CFE4E1;border-radius:6px;padding:5px 8px;color:var(--teal)}
+.sz.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.addbar{position:absolute;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:9px 12px;display:flex;align-items:center;gap:8px}
+.addbar .pr{font-family:var(--display);font-weight:700;color:var(--teal);font-size:13px}
+.addbar .b{flex:1;text-align:center}
+.rowln{display:flex;justify-content:space-between;font-size:10px;padding:4px 0}
+.rowln.tot{font-family:var(--display);font-weight:700;color:var(--teal);font-size:13px;border-top:1px solid var(--line);margin-top:4px;padding-top:6px}
+.ok{color:var(--teal);font-weight:600}
+.field{margin-bottom:7px}.field label{font-size:7px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#666;display:block;margin-bottom:3px}
+.field .inp{border:1.5px solid #CFE4E1;border-radius:7px;padding:7px 8px;font-size:9px;color:#333;background:#fff}
+.consent{display:flex;gap:6px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px;margin-top:8px;font-size:8px;line-height:1.4}
+.consent .ck{width:13px;height:13px;border-radius:3px;background:var(--teal);flex:none;display:grid;place-items:center;color:#fff;font-size:8px}
+.consent a{color:var(--teal);text-decoration:underline}
+.tick{width:48px;height:48px;border-radius:50%;background:var(--seafoam);display:grid;place-items:center;margin:24px auto 12px}
+.tick svg{width:24px;height:24px;fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.center{text-align:center;padding:6px 10px}
+.center h3{font-family:var(--display);color:var(--teal);font-size:20px;margin-bottom:6px}
+.center p{font-size:10px;color:#666}
+.email{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px;margin-top:10px;text-align:left;font-size:8px}
+.email .fr{color:var(--gold);font-weight:700;margin-bottom:3px}
+.adm{background:#21403f;margin:-12px -12px 10px;padding:10px 12px;color:#fff;display:flex;align-items:center;gap:6px}
+.adm .w{font-family:var(--display);font-weight:700;font-size:14px}.adm .pill{margin-left:auto;background:var(--gold);color:#21403f;font-size:7px;font-weight:700;padding:3px 8px;border-radius:999px;text-transform:uppercase}
+.trow{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:9px}
+.trow .th{width:26px;height:34px;border-radius:4px;background:var(--seafoam)}
+.trow .st{margin-left:auto;font-size:7px;font-weight:700;padding:2px 7px;border-radius:999px}
+.st.a{background:#e4f1ef;color:var(--teal)}.st.d{background:#f5ecd8;color:var(--gold)}
+.setline{display:flex;justify-content:space-between;font-size:9px;padding:6px 0;border-bottom:1px solid var(--line)}
+.setline b{color:var(--teal)}
+.instrow{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px;margin-top:6px;font-size:9px}
+.instrow .ic{width:24px;height:24px;border-radius:6px;background:var(--teal)}
+/* controls */
+.controls{display:flex;align-items:center;gap:14px;margin-top:18px}
+.progress{flex:1;height:6px;background:#e7ded2;border-radius:999px;overflow:hidden}
+.progress .fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--aqua));border-radius:999px}
+.ctrl-btn{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.ctrl-btn svg{width:20px;height:20px;fill:currentColor}
+.time{font-size:13px;font-weight:600;color:var(--teal);min-width:74px;text-align:right;font-variant-numeric:tabular-nums}
+.dots{display:flex;gap:6px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.dot{width:9px;height:9px;border-radius:50%;background:#d8cdbc;cursor:pointer;transition:.2s}
+.dot.on{background:var(--teal);width:22px;border-radius:999px}
+.foot{text-align:center;margin-top:14px;font-size:12px;color:#8a8a8a}
+.foot b{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="top">
+    <svg class="em" viewBox="0 0 72 56" fill="none" stroke="#C9A86A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M36 46V18"/><path d="M36 18C31 10 27 7 22 6c2 7 6 13 14 18"/><path d="M36 18c5-8 9-11 14-12-2 7-6 13-14 18"/><path d="M36 24c-9-2-16 0-22 6 8 2 16 0 22-6"/><path d="M36 24c9-2 16 0 22 6-8 2-16 0-22-6"/><path d="M18 50c8-6 28-6 36 0"/></svg>
+    <div class="wm">Zanobia<small>Sewing</small></div>
+    <div class="tag">App Walkthrough · 45s</div>
+  </div>
+
+  <div class="panel"><div class="grid2">
+    <div class="copy">
+      <div class="step-no" id="stepNo">01 / 12</div>
+      <h2 id="cTitle"></h2>
+      <p id="cText"></p>
+      <div class="tags" id="cTags"></div>
+    </div>
+    <div class="mock"><div class="phone" id="phone"></div></div>
+  </div></div>
+
+  <div class="controls">
+    <div class="ctrl-btn" id="playBtn" title="Play / pause"></div>
+    <div class="progress"><div class="fill" id="fill"></div></div>
+    <div class="time" id="time">0:00 / 0:45</div>
+    <div class="ctrl-btn" id="replayBtn" title="Replay"><svg viewBox="0 0 24 24"><path d="M12 5V2L7 7l5 5V9a5 5 0 11-5 5H5a7 7 0 107-9z"/></svg></div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="foot">Chic · Timeless · You — a complete iOS/Android-ready store for <b>Zanobia Sewing</b></div>
+</div>
+
+<script>
+const PLAY='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+const PAUSE='<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+const heart='<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-8.5C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.3.8-1.1 2-2.3 4-2.3 3.5 0 5 3.5 3.5 7C19 16.5 12 21 12 21z"/></svg>';
+const srch='<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
+const ptop=(icons='')=>`<div class="ptop"><div class="pw">Zanobia<small>SEWING</small></div><div class="ico">${icons}</div></div>`;
+const promo='<div class="pbar">Wear your culture with pride — <b>15% off</b> your first order · APP15</div>';
+function pcard(cat,nm,pr,was,badge,badgeCls){return `<div class="pc"><div class="im">${badge?`<span class="bd ${badgeCls||''}">${badge}</span>`:''}<span class="h">${heart}</span></div><div class="in"><div class="ct">${cat}</div><div class="nm">${nm}</div><div class="pr">${pr}${was?`<s>${was}</s>`:''}</div></div></div>`;}
+
+const SCENES=[
+ {t:'Chic. Timeless. You.',x:'A boutique storefront that opens like a native app — block-print branding, your logo, your voice.',tags:['iOS & Android','PWA install','Your branding'],dur:3900,
+  scr:promo+ptop(srch+heart)+`<div class="pbody"><div class="lock"><svg class="em" viewBox="0 0 72 56" fill="none" stroke="#C9A86A" stroke-width="2.5"><path d="M36 46V18"/><path d="M36 18C31 10 27 7 22 6c2 7 6 13 14 18"/><path d="M36 18c5-8 9-11 14-12-2 7-6 13-14 18"/><path d="M36 24c-9-2-16 0-22 6 8 2 16 0 22-6"/><path d="M36 24c9-2 16 0 22 6-8 2-16 0-22-6"/></svg><div class="w">Zanobia</div><div class="s">— Sewing —</div><div style="color:var(--rose)">❤</div><div class="t">Chic. Timeless. You.</div></div><div class="btnrow"><span class="b fill">Shop Now</span><span class="b out">View Collection</span></div></div>`},
+
+ {t:'Shop by collection',x:'Dresses, Blouses, Pants, Bags, Men and Bedroom Linen — plus New Arrivals, Summer & Sale, all filterable in a tap.',tags:['Dresses','Bags','Men','Bedroom Linen','Summer','Sale'],dur:3900,
+  scr:ptop(srch+heart)+`<div class="pbody"><div class="chips"><span class="chip on">All</span><span class="chip rose">New</span><span class="chip rose">Summer</span><span class="chip rose">Sale</span></div><div class="chips" style="margin-top:-4px"><span class="chip">Dresses</span><span class="chip">Bags</span><span class="chip">Men</span><span class="chip">Linen</span></div><div class="cards">${pcard('Dresses','Palmyra Abaya','$248','$320','Sale')}${pcard('Blouses','Desert Rose','$89','$110','Sale')}${pcard('Men','Aurelius Shirt','$98','','New','teal')}${pcard('Linen','Palmyra Duvet','$219','$269','Sale')}</div></div>`},
+
+ {t:'Smart search',x:'A real search bar right in the header — type “linen” and the whole catalogue narrows instantly.',tags:['Instant results','Title · tags · category'],dur:3200,
+  scr:ptop(srch+heart)+`<div class="pbody"><div class="sbar"><input value="linen"><span class="g">Search</span></div><div class="cards">${pcard('Dresses','Solstice Linen','$119','$149','Sale')}${pcard('Men','Aurelius Linen','$98','','New','teal')}${pcard('Linen','Palmyra Duvet','$219','$269','Sale')}${pcard('Linen','Oasis Pillowcase','$59','','')}</div></div>`},
+
+ {t:'Add to bag — keep shopping',x:'Pick a size, add to bag, then keep browsing or searching. The cart is saved on the device and never lost.',tags:['Saved cart','Sizes & colours','Add to bag'],dur:3900,
+  scr:ptop(srch+heart)+`<div class="pbody" style="padding-bottom:0"><div class="ct" style="font-size:7px;color:var(--gold);font-weight:700;letter-spacing:.1em">DRESSES</div><div style="font-family:var(--display);color:#333;font-size:15px;font-weight:600;margin:2px 0 4px">Palmyra Silk Abaya</div><div class="big"></div><div class="sizes"><span class="sz">XS</span><span class="sz on">S</span><span class="sz">M</span><span class="sz">L</span></div></div><div class="addbar"><span class="pr">$248</span><span class="b fill">Add to bag</span></div>`},
+
+ {t:'Wishlist',x:'Tap the ❤ on anything to save it for later — a personal wishlist that persists between visits.',tags:['Save favourites','One-tap'],dur:3000,
+  scr:ptop(srch+heart)+`<div class="pbody"><div class="ct" style="font-size:8px;color:var(--gold);font-weight:700;letter-spacing:.1em">SAVED FOR LATER</div><div style="font-family:var(--display);color:var(--teal);font-size:16px;font-weight:700;margin:2px 0 8px">Your Wishlist</div><div class="cards">${pcard('Dresses','Solstice Linen','$119','$149','Sale')}${pcard('Bags','Seam Line Tote','$189','','New','teal')}${pcard('Men','Aurelius Shirt','$98','','')}${pcard('Shoes','Gilded Slide','$159','$199','Sale')}</div></div>`},
+
+ {t:'USA shipping & tax — automatic',x:'The customer enters their address; the app instantly calculates USA shipping and state sales tax — no manual work.',tags:['USA shipping','State sales tax','Live totals'],dur:4300,
+  scr:ptop()+`<div class="pbody"><div style="font-family:var(--display);color:var(--teal);font-size:15px;font-weight:700;margin-bottom:6px">Checkout</div><div class="field"><label>Address</label><div class="inp">1 Palmyra Lane</div></div><div style="display:flex;gap:5px"><div class="field" style="flex:1"><label>State</label><div class="inp">NC</div></div><div class="field" style="flex:1"><label>ZIP</label><div class="inp">27701</div></div></div><div style="background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px;margin-top:4px"><div class="rowln"><span>Subtotal</span><span>$248.00</span></div><div class="rowln"><span>Shipping</span><span class="ok">Free</span></div><div class="rowln"><span>Tax (4.75%)</span><span>$11.78</span></div><div class="rowln tot"><span>Total</span><span>$259.78</span></div></div></div>`},
+
+ {t:'15% off the first order',x:'Just like the big boutiques — code APP15 gives new customers 15% off their first full-price order, enforced automatically.',tags:['APP15','First-order only','Full-price items'],dur:3800,
+  scr:ptop()+`<div class="pbody"><div style="font-family:var(--display);color:var(--teal);font-size:15px;font-weight:700;margin-bottom:6px">Checkout</div><div style="font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#666;margin-bottom:4px">Promo code</div><div class="sbar"><input value="APP15" style="border-color:var(--teal);color:#333"><span class="g">Apply</span></div><div style="background:#e4f1ef;color:var(--teal);font-size:9px;font-weight:600;padding:7px 9px;border-radius:7px;margin:4px 0 8px">APP15 applied — you saved $19.35 ✓</div><div style="background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px"><div class="rowln"><span>Subtotal</span><span>$129.00</span></div><div class="rowln"><span>Discount APP15</span><span>−$19.35</span></div><div class="rowln tot"><span>Total</span><span>$116.60</span></div></div></div>`},
+
+ {t:'Paid — everyone notified',x:'On payment the customer gets a confirmation and the owner is emailed the order instantly. Stripe-ready for live cards.',tags:['Owner email','Customer email','Stripe-ready'],dur:3600,
+  scr:ptop()+`<div class="pbody center"><div class="tick"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3>Thank you.</h3><p>Order ZS-9F2K-318 confirmed</p><div class="email"><div class="fr">✉ New order → owner@zanobiasewing.com</div>Palmyra Silk Abaya ×1 — $259.78<br>Ship to: Durham, NC 27701</div></div>`},
+
+ {t:'Admin: manage inventory',x:'Staff upload products, edit them, feature them, or keep them in draft — and delete — from a clean console.',tags:['Upload','Draft / publish','Delete','Feature'],dur:3800,
+  scr:`<div class="pbody"><div class="adm"><div class="w">Zanobia</div><div class="pill">Admin</div></div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-family:var(--display);color:var(--teal);font-size:13px">Inventory</b><span class="b fill" style="font-size:8px;padding:5px 8px">+ Upload</span></div><div class="trow"><div class="th"></div><div><b>Palmyra Silk Abaya</b><br><span style="color:#999;font-size:7px">Featured ★</span></div><span class="st a">active</span></div><div class="trow"><div class="th"></div><div><b>Oasis Midi Skirt</b><br><span style="color:#999;font-size:7px">/oasis-midi</span></div><span class="st d">draft</span></div><div class="trow"><div class="th"></div><div><b>Nomad Waffle Throw</b></div><span class="st a">active</span></div></div>`},
+
+ {t:'Super Admin: full control',x:'Change the store name, phone, address, shipping, tax, promo, SEO, socials — and add or remove staff. Everything.',tags:['Name · phone · address','Shipping & tax','Add / remove staff'],dur:3900,
+  scr:`<div class="pbody"><div class="adm"><div class="w">Zanobia</div><div class="pill">Super Admin</div></div><b style="font-family:var(--display);color:var(--teal);font-size:13px">Store settings</b><div class="setline"><span>Store name</span><b>Zanobia Sewing</b></div><div class="setline"><span>Phone</span><b>+1 (919) 555-0100</b></div><div class="setline"><span>Free shipping over</span><b>$150.00</b></div><div class="setline"><span>Promo</span><b>APP15 · 15%</b></div><div class="setline"><span>Instagram</span><b>@zanobiasewing</b></div></div>`},
+
+ {t:'Customers, consent & privacy',x:'With their consent, customers are saved for future deals — exportable to CSV, with a built-in privacy policy.',tags:['Opt-in only','CSV export','Privacy policy'],dur:3900,
+  scr:`<div class="pbody"><div class="adm"><div class="w">Zanobia</div><div class="pill">Super Admin</div></div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-family:var(--display);color:var(--teal);font-size:13px">Customers</b><span class="b fill" style="font-size:8px;padding:5px 8px">Export CSV</span></div><div class="trow"><div><b>Aya B.</b><br><span style="color:#999;font-size:7px">aya@email.com</span></div><span style="margin-left:auto">$259</span></div><div class="trow"><div><b>Lena Q.</b><br><span style="color:#999;font-size:7px">lena@email.com</span></div><span style="margin-left:auto">$188</span></div><div class="consent"><span class="ck">✓</span><span>Email me about new arrivals & offers. See our <a>Privacy Policy</a>.</span></div></div>`},
+
+ {t:'Ready to launch',x:'Installable like an app, SEO-enabled, social-connected, and fully brandable. A complete store, ready for approval.',tags:['SEO','Social','PWA','Stripe-ready'],dur:3800,
+  scr:promo+ptop(srch+heart)+`<div class="pbody center"><div style="margin-top:14px"><svg class="em" style="width:40px" viewBox="0 0 72 56" fill="none" stroke="#C9A86A" stroke-width="2.5"><path d="M36 46V18"/><path d="M36 18C31 10 27 7 22 6c2 7 6 13 14 18"/><path d="M36 18c5-8 9-11 14-12-2 7-6 13-14 18"/></svg></div><h3 style="margin-top:8px">Zanobia Sewing</h3><p>Chic. Timeless. You.</p><div class="instrow"><div class="ic"></div><div><b>Add to Home Screen</b><br><span style="color:#999;font-size:7px">Installs like a native app</span></div></div><div class="btnrow" style="margin-top:12px"><span class="b fill">Approve &amp; launch</span></div></div>`},
+];
+
+const TOTAL=SCENES.reduce((s,x)=>s+x.dur,0);
+const phone=document.getElementById('phone');
+SCENES.forEach((s,i)=>{const d=document.createElement('div');d.className='scr';d.id='scr'+i;d.innerHTML=s.scr;phone.appendChild(d);});
+const dots=document.getElementById('dots');
+SCENES.forEach((_,i)=>{const d=document.createElement('div');d.className='dot';d.onclick=()=>go(i,true);dots.appendChild(d);});
+
+let idx=0,playing=true,t0=performance.now(),elapsedBefore=0,raf;
+function fmt(ms){ms=Math.max(0,ms);const s=Math.round(ms/1000);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+function render(){
+  document.querySelectorAll('.scr').forEach((e,i)=>e.classList.toggle('on',i===idx));
+  document.querySelectorAll('.dot').forEach((e,i)=>e.classList.toggle('on',i===idx));
+  const s=SCENES[idx];
+  document.getElementById('stepNo').textContent=String(idx+1).padStart(2,'0')+' / '+SCENES.length;
+  document.getElementById('cTitle').textContent=s.t;
+  document.getElementById('cText').textContent=s.x;
+  document.getElementById('cTags').innerHTML=s.tags.map((t,i)=>`<span class="${i%3===1?'rose':''}">${t}</span>`).join('');
+}
+function startBefore(i){return SCENES.slice(0,i).reduce((a,b)=>a+b.dur,0);}
+function go(i,user){idx=(i+SCENES.length)%SCENES.length;elapsedBefore=startBefore(idx);t0=performance.now();render();if(user&&!playing){playing=true;setPlay();loop();}}
+function setPlay(){document.getElementById('playBtn').innerHTML=playing?PAUSE:PLAY;}
+function loop(){
+  cancelAnimationFrame(raf);
+  const tick=()=>{
+    if(!playing)return;
+    const now=performance.now();
+    const inScene=now-t0;
+    const total=elapsedBefore+inScene;
+    document.getElementById('fill').style.width=(100*total/TOTAL)+'%';
+    document.getElementById('time').textContent=fmt(total)+' / '+fmt(TOTAL);
+    if(inScene>=SCENES[idx].dur){
+      if(idx<SCENES.length-1){idx++;elapsedBefore=startBefore(idx);t0=performance.now();render();}
+      else{playing=false;setPlay();document.getElementById('fill').style.width='100%';document.getElementById('time').textContent=fmt(TOTAL)+' / '+fmt(TOTAL);return;}
+    }
+    raf=requestAnimationFrame(tick);
+  };
+  raf=requestAnimationFrame(tick);
+}
+document.getElementById('playBtn').onclick=()=>{playing=!playing;setPlay();if(playing){t0=performance.now();loop();}};
+document.getElementById('replayBtn').onclick=()=>{idx=0;elapsedBefore=0;t0=performance.now();playing=true;setPlay();render();loop();};
+render();setPlay();loop();
+</script>
+</body>
+</html>
