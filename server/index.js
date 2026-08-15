@@ -227,6 +227,7 @@ app.post('/api/checkout', async (req, res) => {
     // Stripe: send the browser to the secure hosted checkout page.
     res.json({ order_number: number, paid: false, mode: paymentMode, checkout_url: pay.url });
   } catch (e) {
+    console.error('CHECKOUT FAILED →', e && e.message);
     res.status(400).json({ error: e.message, code: e.code });
   }
 });

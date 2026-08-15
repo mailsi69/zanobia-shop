@@ -277,7 +277,7 @@ async function viewCheckout() {
 
     <div id="payNote"></div>
     <button class="btn btn-primary" id="placeBtn" style="margin-top:14px" disabled>Enter address to continue</button>
-    <p class="hint" style="margin-top:14px;text-align:center">Demo build uses a mock payment gateway. Connect Stripe keys in .env for live cards.</p>
+    <p class="hint" style="margin-top:14px;text-align:center">Payments are processed securely. You'll be taken to a protected payment page to complete your order.</p>
   </div>`;
   ['f_state', 'f_line1', 'f_city', 'f_zip', 'f_email'].forEach(id => $('#' + id).addEventListener('input', debouncedQuote));
   $('#f_state').addEventListener('change', debouncedQuote);

@@ -6,10 +6,19 @@
  *  • Otherwise → a MOCK gateway that "captures" instantly, so the whole
  *    checkout → paid → email flow works with zero external accounts (demo mode).
  */
+// Trim the keys: a stray space or newline pasted with the key corrupts the
+// request and causes "connection to Stripe" errors. This removes them safely.
+const SECRET = (process.env.STRIPE_SECRET_KEY || '').trim();
+const PUBLISHABLE = (process.env.STRIPE_PUBLISHABLE_KEY || '').trim();
+
 let stripe = null;
-if (process.env.STRIPE_SECRET_KEY) {
-  try { stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); }
-  catch { console.warn('⚠ stripe package not installed; using mock gateway. Run: npm i stripe'); }
+if (SECRET) {
+  try {
+    stripe = require('stripe')(SECRET, { maxNetworkRetries: 2, timeout: 30000 });
+    console.log('✔ Stripe initialised (live=' + SECRET.startsWith('sk_live_') + ', key length=' + SECRET.length + ')');
+  } catch (e) {
+    console.warn('⚠ Stripe could not initialise; using mock gateway:', e.message);
+  }
 }
 const mode = stripe ? 'stripe' : 'mock';
 
@@ -20,24 +29,33 @@ const mode = stripe ? 'stripe' : 'mock';
  */
 async function startPayment({ order, successUrl, cancelUrl }) {
   if (stripe) {
-    const session = await stripe.checkout.sessions.create({
-      mode: 'payment',
-      customer_email: order.email,
-      line_items: [{
-        quantity: 1,
-        price_data: {
-          currency: 'usd',
-          unit_amount: order.total_cents,
-          product_data: { name: `Zanobia Sewing — order ${order.number}` }
-        }
-      }],
-      // total already includes our calculated shipping + tax
-      success_url: successUrl,
-      cancel_url: cancelUrl,
-      metadata: { order: order.number },
-      payment_intent_data: { metadata: { order: order.number } }
-    });
-    return { mode, ref: session.id, url: session.url, captured: false };
+    try {
+      const session = await stripe.checkout.sessions.create({
+        mode: 'payment',
+        customer_email: order.email,
+        line_items: [{
+          quantity: 1,
+          price_data: {
+            currency: 'usd',
+            unit_amount: order.total_cents,
+            product_data: { name: `Zanobia Sewing — order ${order.number}` }
+          }
+        }],
+        // total already includes our calculated shipping + tax
+        success_url: successUrl,
+        cancel_url: cancelUrl,
+        metadata: { order: order.number },
+        payment_intent_data: { metadata: { order: order.number } }
+      });
+      return { mode, ref: session.id, url: session.url, captured: false };
+    } catch (e) {
+      // Print the real cause into the server logs so it's diagnosable.
+      console.error('STRIPE CHECKOUT ERROR →', e.type || '', '|', e.message);
+      const hint = /connection/i.test(e.message)
+        ? 'Could not reach Stripe. Re-check the STRIPE_SECRET_KEY value has no extra spaces.'
+        : (e.message || 'Stripe error');
+      throw new Error(hint);
+    }
   }
   return { mode, ref: 'mock_' + Math.random().toString(36).slice(2, 12), url: null, captured: true };
 }
@@ -67,5 +85,5 @@ async function refundPayment({ paymentRef, amountCents }) {
 
 module.exports = {
   startPayment, confirmPayment, refundPayment,
-  paymentMode: mode, publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || ''
+  paymentMode: mode, publishableKey: PUBLISHABLE
 };
