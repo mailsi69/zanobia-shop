@@ -69,6 +69,13 @@ window.onpopstate = route;
 document.addEventListener('click', e => { const a = e.target.closest('a[data-nav]'); if (a) { e.preventDefault(); nav(a.getAttribute('href')); } });
 async function route() {
   const path = location.pathname;
+  document.body.dataset.view =
+    path.startsWith('/p/') ? 'product' :
+    path === '/checkout' ? 'checkout' :
+    path.startsWith('/success') ? 'success' :
+    path === '/wishlist' ? 'wishlist' :
+    path === '/privacy' ? 'privacy' :
+    path === '/track' ? 'track' : 'home';
   if (path.startsWith('/p/')) return viewProduct(path.slice(3));
   if (path === '/checkout') return viewCheckout();
   if (path.startsWith('/success')) return viewSuccess();
