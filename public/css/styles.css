@@ -295,3 +295,8 @@ footer.site::before{ background-image:url("data:image/svg+xml,%3Csvg%20xmlns='ht
 .drawer > *{ position:relative; z-index:1; }
 .drawer footer{ background:transparent; }
 
+/* ── Mobile fit: keep all content inside the screen ── */
+html{ overflow-x:clip; }
+.checkout{ padding:24px 20px 70px; }
+.sumrow span:last-child{ white-space:nowrap; padding-left:12px; }
+
