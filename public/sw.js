@@ -5,7 +5,7 @@
    IMPORTANT: bump the CACHE string below on every deploy (v2 -> v3 -> ...).
    Changing the name makes activate() delete the old cache, guaranteeing
    every visitor gets fresh code instead of a stale cached bundle. */
-const CACHE = 'zanobia-v4';
+const CACHE = 'zanobia-v5';
 const SHELL = ['/', '/css/styles.css', '/js/store.js', '/manifest.webmanifest'];
 
 self.addEventListener('install', e => {
